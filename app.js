@@ -47,19 +47,19 @@ const STATIONS = [
     title: 'INTERACTIVE EXPERIENCES',
     short: 'Citrex + event builds',
     kicker: 'EVENTS / EXPERIENCES',
-    description: 'Interactive work built to be used in public, not just viewed in a browser tab. Citrex projects and Lotería were made for live events where the interaction has to be obvious immediately.',
-    detailText: 'Interactive Experiences is where the work gets physical: event-facing browser games, custom interactions, and Citrex activations that had to work for real people in real venues with almost no onboarding.',
+    description: 'Interactive work built to be used in public, not just viewed in a browser tab. Citrex activations and Lotería del Limón were designed to make the interaction obvious immediately.',
+    detailText: 'Interactive Experiences is where the work gets physical: event-facing browser games, custom interactions, and Citrex activations that had to work for real people in real venues with almost no onboarding. Lotería del Limón shows the same approach in a screen-first game format.',
     station: { x: 810, y: 610 },
     join: { x: 639, y: 496, angle: 0.89 },
     branchPoints: [[639,496],[714,555],[810,555],[810,610]],
     label: { x: 810, y: 670, anchor: 'middle', rotate: -1.3 },
     tooltipSide: 'bottom',
-    previewAsset: { type: 'image', badge: 'BRAND / EVENT', label: 'CITREX', src: './assets/citrex-logo.png' },
+    previewAsset: { type: 'image', badge: 'LIVE EVENT', label: 'CITREX — EVENT EXPERIENCE', src: './assets/citrex-event.png' },
     assets: [
+      { type: 'image', badge: 'LIVE EVENT', label: 'CITREX — EVENT EXPERIENCE', src: './assets/citrex-event.png' },
       { type: 'image', badge: 'BRAND / EVENT', label: 'CITREX', src: './assets/citrex-logo.png' },
-      { type: 'placeholder', badge: 'IMAGE', label: 'CITREX — EVENT EXPERIENCE' },
-      { type: 'placeholder', badge: 'IMAGE', label: 'LOTERÍA — LIVE EVENT' },
-      { type: 'placeholder', badge: 'VIDEO', label: 'LOTERÍA — GAMEPLAY' }
+      { type: 'image', badge: 'GAME', label: 'LOTERÍA DEL LIMÓN — TITLE SCREEN', src: './assets/loteria-del-limon.png' },
+      { type: 'video', badge: 'SCREEN RECORDING', label: 'LOTERÍA DEL LIMÓN — GAMEPLAY', src: './assets/loteria-del-limon.mp4' }
     ]
   },
   {
@@ -426,8 +426,8 @@ const transitionStrokes = [
 ];
 
 const TRANSITION = {
-  strokeMs: 70,
-  betweenMs: 2,
+  strokeMs: 45,
+  betweenMs: 1,
   coveredBeatMs: 24,
   titleInMs: 80,
   titleHoldMs: 280,
