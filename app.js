@@ -8,36 +8,76 @@ const STATIONS = [
     short: 'Local-first authoring application',
     kicker: 'AUTHORING / TOOLS',
     description: 'Breadmaker is a local-first writing application for long-form projects. It combines manuscript editing, visual planning, maps, review workflows, and project storage in one workspace.',
-    detailText: 'Breadmaker is an ongoing authoring application built around the workflow of writing a large manuscript. The editor handles chapters and scenes, while separate views cover visual planning, maps, review sessions, checkpoints, and project recovery. The video below shows the current hero section of the Breadmaker website.',
+    detailText: 'Breadmaker is an ongoing authoring application built around the workflow of writing a large manuscript. The editor handles chapters and scenes, while separate views cover visual planning, maps, review sessions, checkpoints, and project recovery.',
     station: { x: 785, y: 175 },
     join: { x: 653, y: 256, angle: -0.79 },
     branchPoints: [[653,256],[718,208],[785,208],[785,175]],
     label: { x: 785, y: 124, anchor: 'middle', rotate: -1.4 },
     tooltipSide: 'top',
     previewAsset: { type: 'video', badge: 'VIDEO', label: 'BREADMAKER — WEBSITE HERO', src: './assets/breadmaker-site.mp4' },
-    assets: [
-      { type: 'video', badge: 'VIDEO', label: 'BREADMAKER — WEBSITE HERO', src: './assets/breadmaker-site.mp4' },
+    projects: [
+      {
+        id: 'breadmaker-app',
+        title: 'BREADMAKER',
+        kicker: 'AUTHORING APPLICATION',
+        summary: 'A local-first writing application for long-form projects, with manuscript editing, planning, maps, review workflows, backups, and recovery.',
+        description: 'Breadmaker is an authoring application I have been building for writers working on large projects. The manuscript is split into chapters and scenes, while separate tools handle planning, visual maps, review sessions, checkpoints, and project recovery. The interface is designed around keeping those systems connected without turning the writing view into a dashboard. The video shown here is the hero section of the Breadmaker website; application footage and editor screenshots will be added separately.',
+        media: [
+          { type: 'video', label: 'Breadmaker website hero', src: './assets/breadmaker-site.mp4' }
+        ]
+      }
     ]
   },
   {
     id: 'online-stores',
     title: 'ONLINE STORES',
-    short: 'Storefronts + usability tooling',
+    short: 'Storefronts + playtesting tooling',
     kicker: 'ECOMMERCE / INTERNAL TOOLS',
-    description: 'Two live storefront projects and the internal testing tool used alongside product work. Corazón de Terciopelo and AvoKind are public ecommerce sites; Cairon records and reviews structured user-test sessions.',
-    detailText: 'This section contains two live ecommerce sites and one internal research tool. Corazón de Terciopelo is a jewelry storefront, AvoKind is a consumer nutrition storefront, and Cairon is a browser-based tool for registering usability sessions and reviewing the resulting reports.',
+    description: 'Two live ecommerce sites and Cairon, an internal playtesting tool I built for the development of a board game.',
+    detailText: 'This section contains two live ecommerce sites and Cairon, an internal browser tool I built to support playtesting for a board game. Open a project to see its media and, where available, the live site.',
     station: { x: 890, y: 355 },
     join: { x: 700, y: 384, angle: 0.09 },
     branchPoints: [[700,384],[812,384],[836,355],[890,355]],
     label: { x: 890, y: 307, anchor: 'middle', rotate: -1 },
     tooltipSide: 'top',
     previewAsset: { type: 'image', badge: 'LIVE SITE', label: 'AVOKIND — NUTRITION STOREFRONT', src: './assets/avokind-home.png', href: 'https://avokind.com/' },
-    assets: [
-      { type: 'image', badge: 'LIVE SITE', label: 'CORAZÓN DE TERCIOPELO — JEWELRY STOREFRONT', src: './assets/corazon-home.png', href: 'https://corazondeterciopelo.com/' },
-      { type: 'image', badge: 'LIVE SITE', label: 'AVOKIND — NUTRITION STOREFRONT', src: './assets/avokind-home.png', href: 'https://avokind.com/' },
-      { type: 'image', badge: 'INTERNAL TOOL', label: 'CAIRON — SESSION REGISTRATION AND TESTING INTERFACE', src: './assets/cairon-tooling.png' },
-      { type: 'image', badge: 'REPORT', label: 'CAIRON — USER-TEST SESSION REPORT', src: './assets/cairon-report-01.png' },
-      { type: 'image', badge: 'REPORT', label: 'CAIRON — REPORT DETAIL', src: './assets/cairon-report-02.png' }
+    projects: [
+      {
+        id: 'cairon',
+        title: 'CAIRON',
+        kicker: 'BOARD GAME / INTERNAL TOOL',
+        summary: 'Internal playtesting software I built for the development of a board game.',
+        description: 'Cairon is a board game project for which I built an internal browser-based playtesting tool. The tool was used to register play sessions and review the results afterward, making it easier to compare what happened across different tests. The main image shows the testing interface; the other two images are reports from individual play sessions.',
+        media: [
+          { type: 'image', label: 'Cairon — playtesting interface', src: './assets/cairon-tooling.png' },
+          { type: 'image', label: 'Cairon — play session report 01', src: './assets/cairon-report-01.png' },
+          { type: 'image', label: 'Cairon — play session report 02', src: './assets/cairon-report-02.png' }
+        ]
+      },
+      {
+        id: 'avokind',
+        title: 'AVOKIND',
+        kicker: 'SHOPIFY / PRODUCT EXPERIENCE',
+        summary: 'A Shopify product experience for a nutrition brand, built around explaining an unfamiliar product clearly before asking for the purchase.',
+        description: 'AvoKind is a consumer nutrition storefront built on Shopify. My work focused on the product experience: restructuring the page hierarchy, presenting ingredients and product information clearly, improving the purchase flow, and building interactions that help explain the product without burying the user in copy.',
+        href: 'https://avokind.com/',
+        linkLabel: 'OPEN LIVE SITE',
+        media: [
+          { type: 'image', label: 'AvoKind — live storefront', src: './assets/avokind-home.png' }
+        ]
+      },
+      {
+        id: 'corazon',
+        title: 'CORAZÓN DE TERCIOPELO',
+        kicker: 'ECOMMERCE',
+        summary: 'A live ecommerce site for a jewelry brand.',
+        description: 'Corazón de Terciopelo is a live jewelry storefront. The work centered on presenting the catalog cleanly, keeping the product photography dominant, and making the path from browsing to purchase straightforward across desktop and mobile.',
+        href: 'https://corazondeterciopelo.com/',
+        linkLabel: 'OPEN LIVE SITE',
+        media: [
+          { type: 'image', label: 'Corazón de Terciopelo — live storefront', src: './assets/corazon-home.png' }
+        ]
+      }
     ]
   },
   {
@@ -45,19 +85,37 @@ const STATIONS = [
     title: 'INTERACTIVE EXPERIENCES',
     short: 'Event browser games',
     kicker: 'EVENTS / EXPERIENCES',
-    description: 'Browser games created for branded event experiences. Citrex ran on a large vertical touch display at a live activation; Lotería del Limón is a separate Citrex game built around a digital lotería format.',
-    detailText: 'These are browser-based games created for Citrex event experiences. The Citrex touch game shown below was deployed on a large vertical display and played directly by attendees. Lotería del Limón is a separate branded game based on Mexican lotería; the screen recording shows the playable build rather than event footage.',
+    description: 'Browser games built for Citrex for different live events, each with its own event format, visual identity, and interaction model.',
+    detailText: 'These are browser-based games built for Citrex for different events. Open either project to see the actual event material and playable-build footage we currently have.',
     station: { x: 810, y: 610 },
     join: { x: 639, y: 496, angle: 0.89 },
     branchPoints: [[639,496],[714,555],[810,555],[810,610]],
     label: { x: 810, y: 670, anchor: 'middle', rotate: -1.3 },
     tooltipSide: 'bottom',
     previewAsset: { type: 'image', badge: 'LIVE EVENT', label: 'CITREX — TOUCH GAME RUNNING AT A LIVE ACTIVATION', src: './assets/citrex-event.png' },
-    assets: [
-      { type: 'image', badge: 'LIVE EVENT', label: 'CITREX — TOUCH GAME RUNNING AT A LIVE ACTIVATION', src: './assets/citrex-event.png' },
-      { type: 'image', badge: 'BRAND / EVENT', label: 'CITREX — GAME BRANDING', src: './assets/citrex-logo.png' },
-      { type: 'image', badge: 'GAME', label: 'LOTERÍA DEL LIMÓN — TITLE SCREEN', src: './assets/loteria-del-limon.png' },
-      { type: 'video', badge: 'SCREEN RECORDING', label: 'LOTERÍA DEL LIMÓN — PLAYABLE BUILD', src: './assets/loteria-del-limon.mp4' }
+    projects: [
+      {
+        id: 'citrex-event-game',
+        title: 'CITREX',
+        kicker: 'LIVE EVENT / TOUCH GAME',
+        summary: 'A browser game built for one of Citrex’s live events and deployed on a large vertical touch display.',
+        description: 'This game was built for a Citrex live event and ran on a large vertical touch display. It was designed for attendees to walk up and start playing with very little explanation. The photograph shows the game running on the actual event installation.',
+        media: [
+          { type: 'image', label: 'Citrex touch game running at the event', src: './assets/citrex-event.png' },
+          { type: 'image', label: 'Citrex event game branding', src: './assets/citrex-logo.png' }
+        ]
+      },
+      {
+        id: 'loteria-del-limon',
+        title: 'LOTERÍA DEL LIMÓN',
+        kicker: 'CITREX / EVENT GAME',
+        summary: 'A second browser game built for Citrex for a different event, using the structure and visual language of Mexican lotería.',
+        description: 'Lotería del Limón was built for Citrex for a separate event. It adapts the structure and visual language of Mexican lotería into a branded digital game. The title screen shows the final visual direction, while the video shows the playable build. We do not currently have photographs or recordings from the event itself.',
+        media: [
+          { type: 'image', label: 'Lotería del Limón — title screen', src: './assets/loteria-del-limon.png' },
+          { type: 'video', label: 'Lotería del Limón — playable build', src: './assets/loteria-del-limon.mp4' }
+        ]
+      }
     ]
   },
   {
@@ -65,18 +123,47 @@ const STATIONS = [
     title: 'VIDEOGAMES',
     short: 'Games + interactive tools',
     kicker: 'GAME DEVELOPMENT',
-    description: 'Game projects and interactive tools. Please Stop Helping is the main game shown here, alongside the Pokémon Resort fan project and Aquarium Maker, a browser-based 3D layout editor.',
-    detailText: 'This section collects game-focused work from different projects. Please Stop Helping is the primary game shown here. Pokémon Resort is a fan project with its own documentation site, and Aquarium Maker is a browser-based 3D layout tool for designing aquarium spaces and passage geometry.',
+    description: 'A multiplayer game currently in development, a Pokémon fan project, and an open-source aquarium design tool with simulation-oriented spatial systems.',
+    detailText: 'This section collects game-focused work from different projects. Open a project to see the current build, project page, or tool interface.',
     station: { x: 178, y: 610 },
     join: { x: 428, y: 484, angle: 2.31 },
     branchPoints: [[428,484],[338,555],[235,555],[235,610],[178,610]],
     label: { x: 178, y: 670, anchor: 'middle', rotate: 1 },
     tooltipSide: 'bottom',
     previewAsset: { type: 'video', badge: 'VIDEO', label: 'PLEASE STOP HELPING — GAME FOOTAGE', src: './assets/psh.mp4' },
-    assets: [
-      { type: 'video', badge: 'VIDEO', label: 'PLEASE STOP HELPING — GAME FOOTAGE', src: './assets/psh.mp4' },
-      { type: 'image', badge: 'FAN PROJECT', label: 'POKÉMON RESORT — PROJECT DOCUMENTATION SITE', src: './assets/pokemon-resort-page.png', href: 'https://pentaenix.github.io/pokemon-resort-page/#/' },
-      { type: 'image', badge: 'TOOL / SIMULATION', label: 'AQUARIUM MAKER — BROWSER-BASED 3D LAYOUT EDITOR', src: './assets/aquarium-maker.png' },
+    projects: [
+      {
+        id: 'please-stop-helping',
+        title: 'PLEASE STOP HELPING',
+        kicker: 'MULTIPLAYER GAME / IN DEVELOPMENT',
+        summary: 'A multiplayer game currently in development.',
+        description: 'Please Stop Helping is a multiplayer game currently in development. The video shows the current playable build. As development continues, this project view can expand with gameplay systems, multiplayer mechanics, and a clearer breakdown of the parts I worked on.',
+        media: [
+          { type: 'video', label: 'Please Stop Helping — current playable build', src: './assets/psh.mp4' }
+        ]
+      },
+      {
+        id: 'pokemon-resort',
+        title: 'POKÉMON RESORT',
+        kicker: 'FAN PROJECT',
+        summary: 'A Pokémon fan project with its own project page and development material.',
+        description: 'Pokémon Resort is a Pokémon fan project I worked on as a game-development exercise. The separate project page documents the concept and development work in more detail.',
+        href: 'https://pentaenix.github.io/pokemon-resort-page/#/',
+        linkLabel: 'OPEN PROJECT PAGE',
+        media: [
+          { type: 'image', label: 'Pokémon Resort — project documentation site', src: './assets/pokemon-resort-page.png' }
+        ]
+      },
+      {
+        id: 'aquarium-maker',
+        title: 'AQUARIUM MAKER',
+        kicker: 'OPEN SOURCE / 3D TOOL',
+        summary: 'An open-source tool for designing aquarium environments, including swimming volumes used by animals.',
+        description: 'Aquarium Maker is an open-source tool for creating aquarium environments. Along with the visible layout of the aquarium, it lets you define swimming volumes and other spatial regions used by animals inside the simulation. The screenshot shows the editor and the 3D aquarium layout being built.',
+        media: [
+          { type: 'image', label: 'Aquarium Maker — 3D aquarium editor', src: './assets/aquarium-maker.png' }
+        ]
+      }
     ]
   }
 ];
@@ -122,7 +209,15 @@ const els = {
   navProfile: document.getElementById('nav-profile'),
   profileOverlay: document.getElementById('profile-overlay'),
   profileBackdrop: document.getElementById('profile-backdrop'),
-  profileClose: document.getElementById('profile-close')
+  profileClose: document.getElementById('profile-close'),
+  projectOverlay: document.getElementById('project-overlay'),
+  projectBackdrop: document.getElementById('project-backdrop'),
+  projectClose: document.getElementById('project-close'),
+  projectKicker: document.getElementById('project-kicker'),
+  projectTitle: document.getElementById('project-title'),
+  projectSummary: document.getElementById('project-summary'),
+  projectMedia: document.getElementById('project-media'),
+  projectActions: document.getElementById('project-actions')
 };
 
 let selectedId = null;
@@ -130,6 +225,7 @@ let currentActivePath = null;
 let selectionSequence = 0;
 let tooltipTimer = null;
 let transitionBusy = false;
+let activeProjectId = null;
 const stationHitNodes = new Map();
 const labelNodes = new Map();
 
@@ -305,15 +401,67 @@ function previewMarkup(asset) {
   return `<div class="preview-visual preview-visual--placeholder"><span class="preview-visual__badge">${asset.badge}</span><strong>${asset.label}</strong></div>`;
 }
 
-function galleryMarkup(asset) {
-  if (asset.type === 'video') {
-    return `<figure class="asset-card asset-card--video"><div class="asset-media"><video src="${asset.src}" controls muted loop playsinline></video></div><figcaption><span class="asset-card__badge">${asset.badge}</span><span>${asset.label}</span></figcaption></figure>`;
+function projectPreviewMedia(project) {
+  const media = project.media?.[0];
+  if (!media) return '';
+  if (media.type === 'video') {
+    return `<video src="${media.src}" autoplay muted loop playsinline aria-label="${media.label}"></video>`;
   }
-  if (asset.type === 'image') {
-    const card = `<figure class="asset-card asset-card--image"><div class="asset-media"><img src="${asset.src}" alt="${asset.label}"></div><figcaption><span class="asset-card__badge">${asset.badge}</span><span>${asset.label}</span>${asset.href ? '<span class="asset-card__open">OPEN ↗</span>' : ''}</figcaption></figure>`;
-    return asset.href ? `<a class="asset-link" href="${asset.href}" target="_blank" rel="noreferrer">${card}</a>` : card;
+  return `<img src="${media.src}" alt="${media.label}">`;
+}
+
+function projectCardMarkup(project) {
+  return `<button class="project-card" type="button" data-project="${project.id}">
+    <div class="project-card__media">${projectPreviewMedia(project)}</div>
+    <div class="project-card__body">
+      <span class="project-card__kicker">${project.kicker}</span>
+      <h3>${project.title}</h3>
+      <p>${project.summary}</p>
+      <span class="project-card__open">OPEN PROJECT <b aria-hidden="true">↗</b></span>
+    </div>
+  </button>`;
+}
+
+function projectMediaMarkup(media) {
+  if (media.type === 'video') {
+    return `<figure class="project-media-item project-media-item--video">
+      <div class="project-media-item__frame"><video src="${media.src}" controls muted loop playsinline></video></div>
+      <figcaption>${media.label}</figcaption>
+    </figure>`;
   }
-  return `<div class="asset-card asset-card--placeholder"><span class="asset-card__badge">${asset.badge}</span><strong>${asset.label}</strong></div>`;
+  return `<figure class="project-media-item project-media-item--image">
+    <div class="project-media-item__frame"><img src="${media.src}" alt="${media.label}"></div>
+    <figcaption>${media.label}</figcaption>
+  </figure>`;
+}
+
+function getProject(projectId) {
+  const station = stationMap.get(selectedId);
+  return station?.projects?.find(project => project.id === projectId) || null;
+}
+
+function openProject(projectId) {
+  const project = getProject(projectId);
+  if (!project) return;
+  activeProjectId = project.id;
+  els.projectKicker.textContent = project.kicker;
+  els.projectTitle.textContent = project.title;
+  els.projectSummary.textContent = project.description;
+  els.projectMedia.innerHTML = project.media.map(projectMediaMarkup).join('');
+  els.projectActions.innerHTML = project.href
+    ? `<a href="${project.href}" target="_blank" rel="noreferrer">${project.linkLabel || 'OPEN LINK'} <span aria-hidden="true">↗</span></a>`
+    : '';
+  els.projectOverlay.classList.add('is-open');
+  els.projectOverlay.setAttribute('aria-hidden', 'false');
+  requestAnimationFrame(() => els.projectClose.focus());
+}
+
+function closeProject() {
+  if (!els.projectOverlay.classList.contains('is-open')) return;
+  els.projectOverlay.classList.remove('is-open');
+  els.projectOverlay.setAttribute('aria-hidden', 'true');
+  activeProjectId = null;
+  els.projectMedia.querySelectorAll('video').forEach(video => video.pause());
 }
 
 function openPreview() {
@@ -417,7 +565,10 @@ function populateDetail() {
   const station = stationMap.get(selectedId);
   els.detailTitle.textContent = station.title;
   els.detailStatement.textContent = station.detailText;
-  els.detailGallery.innerHTML = station.assets.map(galleryMarkup).join('');
+  els.detailGallery.innerHTML = station.projects.map(projectCardMarkup).join('');
+  els.detailGallery.querySelectorAll('[data-project]').forEach(card => {
+    card.addEventListener('click', () => openProject(card.dataset.project));
+  });
 }
 
 const transitionStrokes = [
@@ -611,6 +762,7 @@ function openDetail() {
 
 function closeDetail() {
   if (!els.detailView.classList.contains('is-open')) return;
+  closeProject();
 
   // The home preview and its selection line should not survive a trip into a detail page.
   // Start their exit while the detail view still covers the map, so home returns to neutral.
@@ -733,6 +885,8 @@ els.previewClose.addEventListener('click', (event) => {
 });
 els.previewEnter.addEventListener('click', openDetail);
 els.returnDetail.addEventListener('click', closeDetail);
+els.projectClose.addEventListener('click', closeProject);
+els.projectBackdrop.addEventListener('click', closeProject);
 
 
 els.navProfile.addEventListener('click', openProfile);
@@ -743,7 +897,12 @@ els.navWork.addEventListener('click', () => {
 els.profileClose.addEventListener('click', closeProfile);
 els.profileBackdrop.addEventListener('click', closeProfile);
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && els.profileOverlay.classList.contains('is-open')) closeProfile();
+  if (event.key !== 'Escape') return;
+  if (els.projectOverlay.classList.contains('is-open')) {
+    closeProject();
+    return;
+  }
+  if (els.profileOverlay.classList.contains('is-open')) closeProfile();
 });
 
 document.addEventListener('pointerdown', (event) => {

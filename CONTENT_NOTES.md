@@ -67,3 +67,12 @@ Do not re-add those older projects until real media is available.
 - Copy should remain factual: prototyping + AI workflows + infrastructure/developer tooling + gameplay/editor systems.
 - Public proof retained: contributing author to Game AI Uncovered Volumes 4, 5 and 6.
 - Public links currently shown: GitHub and itch.io. No email/contact form.
+
+## Project detail behavior
+- Section pages are indexes of projects, not loose asset galleries.
+- Clicking a project opens one focused project view containing its factual description, all media belonging to that project, and an external link only when one is known.
+- Cairon is one board-game project/tool entry; its main interface and two session reports live together inside the Cairon project view.
+- Citrex and Lotería del Limón are separate browser games built for the same company for different events.
+- Please Stop Helping is a multiplayer game currently in development.
+- Aquarium Maker is an open-source aquarium creation tool that includes animal swimming volumes and other simulation-oriented spatial regions.
+- Breadmaker's current video is specifically the website hero, not a general product walkthrough.
