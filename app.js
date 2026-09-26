@@ -769,7 +769,7 @@ function openDetail() {
   const station = stationMap.get(selectedId);
   els.shell.dataset.mode = 'transitioning';
   runPageTransition({
-    title: station.title,
+    title: '',
     swap: () => {
       els.detailView.classList.add('is-open');
       els.detailView.setAttribute('aria-hidden', 'false');
