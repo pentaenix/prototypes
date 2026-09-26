@@ -307,6 +307,9 @@ function renderMap() {
       height: 66,
       class: 'metro-label',
       'data-label': station.id,
+      tabindex: '0',
+      role: 'button',
+      'aria-label': `${station.title} — open project preview`,
       transform: `rotate(${station.label.rotate} ${station.label.x} ${station.label.y})`
     });
     const labelDiv = document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
@@ -319,6 +322,20 @@ function renderMap() {
       labelDiv.appendChild(span);
     });
     label.appendChild(labelDiv);
+    label.addEventListener('mouseenter', () => queueTooltip(station.id));
+    label.addEventListener('mouseleave', hideTooltip);
+    label.addEventListener('focus', () => queueTooltip(station.id));
+    label.addEventListener('blur', hideTooltip);
+    label.addEventListener('click', (event) => {
+      event.stopPropagation();
+      selectStation(station.id);
+    });
+    label.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        selectStation(station.id);
+      }
+    });
     labelNodes.set(station.id, label);
     els.labels.appendChild(label);
 
@@ -873,7 +890,56 @@ function animateTrain(now) {
   requestAnimationFrame(animateTrain);
 }
 
+const preloadedMedia = [];
+
+function collectMediaSources() {
+  const sources = new Map();
+  const remember = (asset) => {
+    if (!asset?.src || !asset?.type) return;
+    sources.set(asset.src, asset.type);
+  };
+  for (const station of STATIONS) {
+    remember(station.previewAsset);
+    for (const project of station.projects ?? []) {
+      remember(project.cover);
+      for (const media of project.media ?? []) remember(media);
+    }
+  }
+  return [...sources.entries()];
+}
+
+function warmProjectMedia() {
+  for (const [src, type] of collectMediaSources()) {
+    if (type === 'image') {
+      const img = new Image();
+      img.decoding = 'async';
+      img.src = src;
+      preloadedMedia.push(img);
+      continue;
+    }
+    if (type === 'video') {
+      const video = document.createElement('video');
+      video.preload = 'auto';
+      video.muted = true;
+      video.playsInline = true;
+      video.src = src;
+      video.load();
+      preloadedMedia.push(video);
+    }
+  }
+}
+
+function scheduleMediaWarmup() {
+  const start = () => warmProjectMedia();
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(start, { timeout: 900 });
+  } else {
+    setTimeout(start, 250);
+  }
+}
+
 renderMap();
+scheduleMediaWarmup();
 els.preview.hidden = true;
 trainState.targetId = nextRandomStation(trainState.currentId);
 setTrainPath(trainState.currentId, trainState.targetId);
@@ -909,6 +975,6 @@ document.addEventListener('pointerdown', (event) => {
   if (els.detailView.classList.contains('is-open')) return;
   if (!els.workbench.classList.contains('has-preview')) return;
   if (els.preview.contains(event.target)) return;
-  if (event.target.closest?.('.station-hit-svg')) return;
+  if (event.target.closest?.('.station-hit-svg, .metro-label')) return;
   closePreview();
 });
