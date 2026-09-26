@@ -21,9 +21,12 @@ const STATIONS = [
         title: 'BREADMAKER',
         kicker: 'AUTHORING APPLICATION',
         summary: 'A local-first writing application for long-form projects, with manuscript editing, planning, maps, review workflows, backups, and recovery.',
-        description: 'Breadmaker is an authoring application I have been building for writers working on large projects. The manuscript is split into chapters and scenes, while separate tools handle planning, visual maps, review sessions, checkpoints, and project recovery. The interface is designed around keeping those systems connected without turning the writing view into a dashboard. The video shown here is the hero section of the Breadmaker website; application footage and editor screenshots will be added separately.',
+        description: 'Breadmaker is an authoring application I have been building for writers working on large projects. The manuscript is split into chapters and scenes, while separate tools handle planning, visual maps, review sessions, checkpoints, and project recovery. The interface is designed around keeping those systems connected without turning the writing view into a dashboard. The video shown here is the hero section of the Breadmaker website, followed by screenshots from the manuscript editor, the canvas planning view, and the story-map view.',
         media: [
-          { type: 'video', label: 'Breadmaker website hero', src: './assets/breadmaker-site.mp4' }
+          { type: 'video', label: 'Breadmaker — website hero', src: './assets/breadmaker-site.mp4' },
+          { type: 'image', label: 'Breadmaker — manuscript editor', src: './assets/breadmaker-manuscript.png' },
+          { type: 'image', label: 'Breadmaker — canvas planning view', src: './assets/breadmaker-canvas.png' },
+          { type: 'image', label: 'Breadmaker — story map view', src: './assets/breadmaker-maps.png' }
         ]
       }
     ]
