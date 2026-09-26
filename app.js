@@ -468,6 +468,7 @@ function openProject(projectId) {
   els.projectActions.innerHTML = project.href
     ? `<a href="${project.href}" target="_blank" rel="noreferrer">${project.linkLabel || 'OPEN LINK'} <span aria-hidden="true">↗</span></a>`
     : '';
+  els.projectOverlay.classList.remove('is-closing');
   els.projectOverlay.classList.add('is-open');
   els.projectOverlay.setAttribute('aria-hidden', 'false');
   requestAnimationFrame(() => els.projectClose.focus());
@@ -476,9 +477,14 @@ function openProject(projectId) {
 function closeProject() {
   if (!els.projectOverlay.classList.contains('is-open')) return;
   els.projectOverlay.classList.remove('is-open');
-  els.projectOverlay.setAttribute('aria-hidden', 'true');
+  els.projectOverlay.classList.add('is-closing');
   activeProjectId = null;
   els.projectMedia.querySelectorAll('video').forEach(video => video.pause());
+  setTimeout(() => {
+    if (els.projectOverlay.classList.contains('is-open')) return;
+    els.projectOverlay.classList.remove('is-closing');
+    els.projectOverlay.setAttribute('aria-hidden', 'true');
+  }, 250);
 }
 
 function openPreview() {
@@ -489,6 +495,7 @@ function openPreview() {
   els.previewImage.innerHTML = previewMarkup(station.previewAsset);
   els.previewDescription.textContent = station.description;
   els.preview.hidden = false;
+  els.preview.classList.remove('is-closing');
   els.preview.setAttribute('aria-hidden', 'false');
   requestAnimationFrame(() => els.workbench.classList.add('has-preview'));
 }
@@ -514,19 +521,13 @@ function closePreview() {
   }
 
   els.workbench.classList.remove('has-preview');
+  els.preview.classList.add('is-closing');
   els.preview.setAttribute('aria-hidden', 'true');
-  let settled = false;
-  const finish = () => {
-    if (settled) return;
-    settled = true;
-    els.preview.removeEventListener('transitionend', done);
-    if (!els.workbench.classList.contains('has-preview')) els.preview.hidden = true;
-  };
-  const done = (event) => {
-    if (event.propertyName === 'transform') finish();
-  };
-  els.preview.addEventListener('transitionend', done);
-  setTimeout(finish, 620);
+  setTimeout(() => {
+    if (els.workbench.classList.contains('has-preview')) return;
+    els.preview.classList.remove('is-closing');
+    els.preview.hidden = true;
+  }, 250);
 }
 
 function animatePath(pathEl, mode = 'in', done) {
@@ -798,6 +799,7 @@ function closeDetail() {
 function openProfile() {
   if (transitionBusy || els.detailView.classList.contains('is-open')) return;
   closePreview();
+  els.profileOverlay.classList.remove('is-closing');
   els.profileOverlay.classList.add('is-open');
   els.profileOverlay.setAttribute('aria-hidden', 'false');
   els.navProfile.classList.add('is-active');
@@ -809,10 +811,15 @@ function openProfile() {
 function closeProfile() {
   if (!els.profileOverlay.classList.contains('is-open')) return;
   els.profileOverlay.classList.remove('is-open');
-  els.profileOverlay.setAttribute('aria-hidden', 'true');
+  els.profileOverlay.classList.add('is-closing');
   els.navProfile.classList.remove('is-active');
   els.navProfile.setAttribute('aria-expanded', 'false');
   els.navWork.classList.add('is-active');
+  setTimeout(() => {
+    if (els.profileOverlay.classList.contains('is-open')) return;
+    els.profileOverlay.classList.remove('is-closing');
+    els.profileOverlay.setAttribute('aria-hidden', 'true');
+  }, 250);
 }
 
 const trainState = {

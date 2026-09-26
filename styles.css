@@ -187,13 +187,18 @@ button { font: inherit; }
   width: min(390px,43%); padding: 24px 26px 24px;
   background: transparent; color: #090a0c;
   isolation: isolate;
-  transform: translate(125%,125%) rotate(-7deg);
+  transform: translate(125%,125%) rotate(-9deg);
   pointer-events: none;
-  transition: transform .54s var(--impact);
+  will-change: transform;
 }
 .workbench.has-preview .preview-panel {
   transform: translate(0,0) rotate(-1.8deg);
   pointer-events: auto;
+  animation: paperSlapIn .34s both;
+}
+.preview-panel.is-closing {
+  pointer-events: none;
+  animation: paperRipOut .22s both;
 }
 .preview-panel__paper { position: absolute; pointer-events: none; }
 .preview-panel__paper--back {
@@ -203,7 +208,10 @@ button { font: inherit; }
   clip-path: polygon(4% 0,100% 0,100% 91%,95% 100%,0 100%,0 7%);
   transform: rotate(1.8deg);
   transform-origin: center;
+  will-change: transform;
 }
+.workbench.has-preview .preview-panel__paper--back { animation: paperBackSettle .38s both; }
+.preview-panel.is-closing .preview-panel__paper--back { animation: paperBackChase .24s both; }
 .preview-panel__paper--front {
   inset: 0;
   z-index: 1;
@@ -267,13 +275,62 @@ button { font: inherit; }
 .preview-panel__enter:hover { color: #fff; }
 .preview-panel__enter:hover::before { width: 100%; }
 
+
+/* Shared paper motion: attack -> overshoot -> counter-rotate -> settle. */
+@keyframes paperSlapIn {
+  0% { transform: translate(130%,130%) rotate(-10deg); }
+  55% { transform: translate(-20px,-14px) rotate(2.2deg); }
+  78% { transform: translate(6px,4px) rotate(-3.2deg); }
+  100% { transform: translate(0,0) rotate(-1.8deg); }
+}
+@keyframes paperSlapInCentered {
+  0% { transform: translate(128%,-48%) rotate(10deg); }
+  55% { transform: translate(-20px,-52%) rotate(1.8deg); }
+  78% { transform: translate(6px,-49.5%) rotate(-3.3deg); }
+  100% { transform: translate(0,-50%) rotate(-1.8deg); }
+}
+@keyframes paperSlapInProject {
+  0% { transform: translate(126%,-47%) rotate(9deg); }
+  55% { transform: translate(-22px,-52%) rotate(1.6deg); }
+  78% { transform: translate(7px,-49.5%) rotate(-2.7deg); }
+  100% { transform: translate(0,-50%) rotate(-1.15deg); }
+}
+@keyframes paperBackSettle {
+  0% { transform: translate(-28px,-18px) rotate(8deg) scale(1.035); }
+  48% { transform: translate(12px,8px) rotate(-2.2deg) scale(1.01); }
+  78% { transform: translate(-3px,-2px) rotate(2.7deg); }
+  100% { transform: translate(0,0) rotate(1.8deg); }
+}
+@keyframes paperRipOut {
+  0% { transform: translate(0,0) rotate(-1.8deg); }
+  18% { transform: translate(-7px,-5px) rotate(-3deg); }
+  100% { transform: translate(132%,128%) rotate(11deg); }
+}
+@keyframes paperRipOutCentered {
+  0% { transform: translate(0,-50%) rotate(-1.8deg); }
+  18% { transform: translate(-8px,-51%) rotate(-3.2deg); }
+  100% { transform: translate(130%,-45%) rotate(12deg); }
+}
+@keyframes paperRipOutProject {
+  0% { transform: translate(0,-50%) rotate(-1.15deg); }
+  18% { transform: translate(-9px,-51%) rotate(-2.8deg); }
+  100% { transform: translate(126%,-45%) rotate(11deg); }
+}
+@keyframes paperBackChase {
+  0%,22% { transform: translate(0,0) rotate(1.8deg); }
+  100% { transform: translate(44px,30px) rotate(8deg); }
+}
+
 /* Profile overlay: same physical paper/slab language as project tickets. */
 .profile-overlay { position: fixed; inset: 0; z-index: 90; visibility: hidden; pointer-events: none; }
-.profile-overlay.is-open { visibility: visible; pointer-events: auto; }
+.profile-overlay.is-open, .profile-overlay.is-closing { visibility: visible; pointer-events: auto; }
 .profile-overlay__backdrop { position: absolute; inset: 0; border: 0; background: rgba(0,0,0,.62); opacity: 0; cursor: default; transition: opacity .18s ease; }
 .profile-overlay.is-open .profile-overlay__backdrop { opacity: 1; }
-.profile-panel { position: absolute; right: clamp(20px,4vw,70px); top: 50%; width: min(560px,88vw); transform: translate(120%, -50%) rotate(4deg); transition: transform .42s var(--impact); }
-.profile-overlay.is-open .profile-panel { transform: translate(0,-50%) rotate(-1.8deg); }
+.profile-panel { position: absolute; right: clamp(20px,4vw,70px); top: 50%; width: min(560px,88vw); transform: translate(125%, -50%) rotate(9deg); will-change: transform; }
+.profile-overlay.is-open .profile-panel { transform: translate(0,-50%) rotate(-1.8deg); animation: paperSlapInCentered .34s both; }
+.profile-overlay.is-closing .profile-panel { animation: paperRipOutCentered .22s both; }
+.profile-overlay.is-open .profile-panel__shadow { animation: paperBackSettle .38s both; }
+.profile-overlay.is-closing .profile-panel__shadow { animation: paperBackChase .24s both; }
 .profile-panel__shadow { position: absolute; inset: 16px -16px -16px 16px; background: var(--signal); clip-path: polygon(4% 0,100% 0,100% 91%,95% 100%,0 100%,0 7%); transform: rotate(1.8deg); }
 .profile-panel__paper { position: relative; padding: 30px 34px 32px; background: var(--paper); color: #090a0c; clip-path: polygon(4% 0,100% 0,100% 91%,95% 100%,0 100%,0 7%); box-shadow: 18px 20px 0 rgba(0,0,0,.3); }
 .profile-panel__close { position: absolute; right: 18px; top: 18px; width: 38px; height: 38px; border: 2px solid #090a0c; border-radius: 999px; background: transparent; color: #090a0c; font: 800 1.15rem/1 var(--display); cursor: pointer; transform: rotate(9deg); }
@@ -344,7 +401,7 @@ button { font: inherit; }
 .project-card__open b { font-size: 1rem; }
 
 .project-overlay { position: fixed; inset: 0; z-index: 82; visibility: hidden; pointer-events: none; }
-.project-overlay.is-open { visibility: visible; pointer-events: auto; }
+.project-overlay.is-open, .project-overlay.is-closing { visibility: visible; pointer-events: auto; }
 .project-overlay__backdrop {
   position: absolute; inset: 0; border: 0; background: rgba(0,0,0,.64);
   opacity: 0; transition: opacity .18s ease; cursor: default;
@@ -353,10 +410,13 @@ button { font: inherit; }
 .project-panel {
   position: absolute; right: clamp(20px,4vw,70px); top: 50%;
   width: min(900px,90vw); max-height: 90vh;
-  transform: translate(118%,-50%) rotate(4deg);
-  transition: transform .42s var(--impact);
+  transform: translate(122%,-50%) rotate(8deg);
+  will-change: transform;
 }
-.project-overlay.is-open .project-panel { transform: translate(0,-50%) rotate(-1.15deg); }
+.project-overlay.is-open .project-panel { transform: translate(0,-50%) rotate(-1.15deg); animation: paperSlapInProject .34s both; }
+.project-overlay.is-closing .project-panel { animation: paperRipOutProject .22s both; }
+.project-overlay.is-open .project-panel__shadow { animation: paperBackSettle .38s both; }
+.project-overlay.is-closing .project-panel__shadow { animation: paperBackChase .24s both; }
 .project-panel__shadow {
   position: absolute;
   inset: 16px -16px -16px 16px;
