@@ -8,15 +8,15 @@ const STATIONS = [
     short: 'Local-first authoring application',
     kicker: 'AUTHORING / TOOLS',
     description: 'Breadmaker is a local-first writing application for long-form projects. It combines manuscript editing, visual planning, maps, review workflows, and project storage in one workspace.',
-    detailText: 'Breadmaker is an ongoing authoring application built around the workflow of writing a large manuscript. The editor handles chapters and scenes, while separate views cover visual planning, maps, review sessions, checkpoints, and project recovery. The video below shows the current product website and how the application is presented to users.',
+    detailText: 'Breadmaker is an ongoing authoring application built around the workflow of writing a large manuscript. The editor handles chapters and scenes, while separate views cover visual planning, maps, review sessions, checkpoints, and project recovery. The video below shows the current hero section of the Breadmaker website.',
     station: { x: 785, y: 175 },
     join: { x: 653, y: 256, angle: -0.79 },
     branchPoints: [[653,256],[718,208],[785,208],[785,175]],
     label: { x: 785, y: 124, anchor: 'middle', rotate: -1.4 },
     tooltipSide: 'top',
-    previewAsset: { type: 'video', badge: 'VIDEO', label: 'BREADMAKER — PRODUCT WEBSITE WALKTHROUGH', src: './assets/breadmaker-site.mp4' },
+    previewAsset: { type: 'video', badge: 'VIDEO', label: 'BREADMAKER — WEBSITE HERO', src: './assets/breadmaker-site.mp4' },
     assets: [
-      { type: 'video', badge: 'VIDEO', label: 'BREADMAKER — PRODUCT WEBSITE WALKTHROUGH', src: './assets/breadmaker-site.mp4' },
+      { type: 'video', badge: 'VIDEO', label: 'BREADMAKER — WEBSITE HERO', src: './assets/breadmaker-site.mp4' },
     ]
   },
   {
