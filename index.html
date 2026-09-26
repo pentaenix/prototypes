@@ -116,12 +116,15 @@
   <div class="project-overlay" id="project-overlay" aria-hidden="true">
     <button class="project-overlay__backdrop" id="project-backdrop" type="button" aria-label="Close project"></button>
     <article class="project-panel" role="dialog" aria-modal="true" aria-labelledby="project-title">
-      <button class="project-panel__close" id="project-close" type="button" aria-label="Close project">×</button>
-      <p class="project-panel__kicker" id="project-kicker"></p>
-      <h2 id="project-title"></h2>
-      <p class="project-panel__summary" id="project-summary"></p>
-      <div class="project-panel__media" id="project-media"></div>
-      <div class="project-panel__actions" id="project-actions"></div>
+      <div class="project-panel__shadow" aria-hidden="true"></div>
+      <div class="project-panel__paper">
+        <button class="project-panel__close" id="project-close" type="button" aria-label="Close project">×</button>
+        <p class="project-panel__kicker" id="project-kicker"></p>
+        <h2 id="project-title"></h2>
+        <p class="project-panel__summary" id="project-summary"></p>
+        <div class="project-panel__media" id="project-media"></div>
+        <div class="project-panel__actions" id="project-actions"></div>
+      </div>
     </article>
   </div>
 
