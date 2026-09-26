@@ -220,7 +220,15 @@ const els = {
   projectTitle: document.getElementById('project-title'),
   projectSummary: document.getElementById('project-summary'),
   projectMedia: document.getElementById('project-media'),
-  projectActions: document.getElementById('project-actions')
+  projectActions: document.getElementById('project-actions'),
+  mediaViewer: document.getElementById('media-viewer'),
+  mediaViewerBackdrop: document.getElementById('media-viewer-backdrop'),
+  mediaViewerClose: document.getElementById('media-viewer-close'),
+  mediaViewerPrev: document.getElementById('media-viewer-prev'),
+  mediaViewerNext: document.getElementById('media-viewer-next'),
+  mediaViewerContent: document.getElementById('media-viewer-content'),
+  mediaViewerCaption: document.getElementById('media-viewer-caption'),
+  mediaViewerCount: document.getElementById('media-viewer-count')
 };
 
 let selectedId = null;
@@ -229,6 +237,7 @@ let selectionSequence = 0;
 let tooltipTimer = null;
 let transitionBusy = false;
 let activeProjectId = null;
+let activeMediaIndex = 0;
 const stationHitNodes = new Map();
 const labelNodes = new Map();
 
@@ -442,15 +451,18 @@ function projectCardMarkup(project) {
   </button>`;
 }
 
-function projectMediaMarkup(media) {
+function projectMediaMarkup(media, index) {
   if (media.type === 'video') {
-    return `<figure class="project-media-item project-media-item--video">
-      <div class="project-media-item__frame"><video src="${media.src}" controls muted loop playsinline></video></div>
+    return `<figure class="project-media-item project-media-item--video" data-media-index="${index}">
+      <div class="project-media-item__frame">
+        <video src="${media.src}" controls muted loop playsinline></video>
+        <button class="project-media-item__expand" type="button" data-media-open="${index}" aria-label="Open ${media.label} in viewer">↗</button>
+      </div>
       <figcaption>${media.label}</figcaption>
     </figure>`;
   }
-  return `<figure class="project-media-item project-media-item--image">
-    <div class="project-media-item__frame"><img src="${media.src}" alt="${media.label}"></div>
+  return `<figure class="project-media-item project-media-item--image" data-media-index="${index}">
+    <button class="project-media-item__frame project-media-item__frame--button" type="button" data-media-open="${index}" aria-label="Open ${media.label} in viewer"><img src="${media.src}" alt="${media.label}"></button>
     <figcaption>${media.label}</figcaption>
   </figure>`;
 }
@@ -460,6 +472,50 @@ function getProject(projectId) {
   return station?.projects?.find(project => project.id === projectId) || null;
 }
 
+function getActiveProject() {
+  return activeProjectId ? getProject(activeProjectId) : null;
+}
+
+function renderMediaViewer() {
+  const project = getActiveProject();
+  const media = project?.media?.[activeMediaIndex];
+  if (!project || !media) return;
+
+  els.mediaViewerContent.innerHTML = media.type === 'video'
+    ? `<video src="${media.src}" controls autoplay muted loop playsinline></video>`
+    : `<img src="${media.src}" alt="${media.label}">`;
+  els.mediaViewerCaption.textContent = media.label;
+  els.mediaViewerCount.textContent = `${activeMediaIndex + 1} / ${project.media.length}`;
+  const multiple = project.media.length > 1;
+  els.mediaViewerPrev.hidden = !multiple;
+  els.mediaViewerNext.hidden = !multiple;
+}
+
+function openMediaViewer(index) {
+  const project = getActiveProject();
+  if (!project?.media?.length) return;
+  activeMediaIndex = Math.max(0, Math.min(index, project.media.length - 1));
+  renderMediaViewer();
+  els.mediaViewer.classList.add('is-open');
+  els.mediaViewer.setAttribute('aria-hidden', 'false');
+  requestAnimationFrame(() => els.mediaViewerClose.focus());
+}
+
+function closeMediaViewer() {
+  if (!els.mediaViewer.classList.contains('is-open')) return;
+  els.mediaViewer.classList.remove('is-open');
+  els.mediaViewer.setAttribute('aria-hidden', 'true');
+  els.mediaViewerContent.querySelectorAll('video').forEach(video => video.pause());
+  els.mediaViewerContent.innerHTML = '';
+}
+
+function stepMediaViewer(direction) {
+  const project = getActiveProject();
+  if (!project?.media?.length) return;
+  activeMediaIndex = (activeMediaIndex + direction + project.media.length) % project.media.length;
+  renderMediaViewer();
+}
+
 function openProject(projectId) {
   const project = getProject(projectId);
   if (!project) return;
@@ -467,7 +523,13 @@ function openProject(projectId) {
   els.projectKicker.textContent = project.kicker;
   els.projectTitle.textContent = project.title;
   els.projectSummary.textContent = project.description;
-  els.projectMedia.innerHTML = project.media.map(projectMediaMarkup).join('');
+  els.projectMedia.innerHTML = project.media.map((media, index) => projectMediaMarkup(media, index)).join('');
+  els.projectMedia.querySelectorAll('[data-media-open]').forEach(button => {
+    button.addEventListener('click', (event) => {
+      event.stopPropagation();
+      openMediaViewer(Number(button.dataset.mediaOpen));
+    });
+  });
   els.projectActions.innerHTML = project.href
     ? `<a href="${project.href}" target="_blank" rel="noreferrer">${project.linkLabel || 'OPEN LINK'} <span aria-hidden="true">↗</span></a>`
     : '';
@@ -478,6 +540,7 @@ function openProject(projectId) {
 }
 
 function closeProject() {
+  closeMediaViewer();
   if (!els.projectOverlay.classList.contains('is-open')) return;
   els.projectOverlay.classList.remove('is-open');
   els.projectOverlay.classList.add('is-closing');
@@ -963,6 +1026,10 @@ els.previewEnter.addEventListener('click', openDetail);
 els.returnDetail.addEventListener('click', closeDetail);
 els.projectClose.addEventListener('click', closeProject);
 els.projectBackdrop.addEventListener('click', closeProject);
+els.mediaViewerClose.addEventListener('click', closeMediaViewer);
+els.mediaViewerBackdrop.addEventListener('click', closeMediaViewer);
+els.mediaViewerPrev.addEventListener('click', () => stepMediaViewer(-1));
+els.mediaViewerNext.addEventListener('click', () => stepMediaViewer(1));
 
 
 els.navProfile.addEventListener('click', openProfile);
@@ -973,6 +1040,11 @@ els.navWork.addEventListener('click', () => {
 els.profileClose.addEventListener('click', closeProfile);
 els.profileBackdrop.addEventListener('click', closeProfile);
 document.addEventListener('keydown', (event) => {
+  if (els.mediaViewer.classList.contains('is-open')) {
+    if (event.key === 'Escape') { closeMediaViewer(); return; }
+    if (event.key === 'ArrowLeft') { event.preventDefault(); stepMediaViewer(-1); return; }
+    if (event.key === 'ArrowRight') { event.preventDefault(); stepMediaViewer(1); return; }
+  }
   if (event.key !== 'Escape') return;
   if (els.projectOverlay.classList.contains('is-open')) {
     closeProject();

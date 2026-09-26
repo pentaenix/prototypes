@@ -129,6 +129,20 @@
     </article>
   </div>
 
+  <div class="media-viewer" id="media-viewer" aria-hidden="true">
+    <button class="media-viewer__backdrop" id="media-viewer-backdrop" type="button" aria-label="Close media viewer"></button>
+    <div class="media-viewer__stage" role="dialog" aria-modal="true" aria-label="Project media viewer">
+      <button class="media-viewer__close" id="media-viewer-close" type="button" aria-label="Close media viewer">×</button>
+      <button class="media-viewer__nav media-viewer__nav--prev" id="media-viewer-prev" type="button" aria-label="Previous media">‹</button>
+      <div class="media-viewer__content" id="media-viewer-content"></div>
+      <button class="media-viewer__nav media-viewer__nav--next" id="media-viewer-next" type="button" aria-label="Next media">›</button>
+      <div class="media-viewer__meta">
+        <span class="media-viewer__caption" id="media-viewer-caption"></span>
+        <span class="media-viewer__count" id="media-viewer-count"></span>
+      </div>
+    </div>
+  </div>
+
   <div class="strike" id="strike" aria-hidden="true">
     <div class="strike__fill"></div>
     <div class="strike__block strike__block--top"></div>
