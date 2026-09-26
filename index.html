@@ -29,9 +29,8 @@
         <span class="brand__role">AI ENGINEER</span>
       </a>
       <nav class="nav" aria-label="Primary">
-        <span class="nav__item is-active">WORK</span>
-        <span class="nav__item">PROFILE</span>
-        <span class="nav__item">CONTACT</span>
+        <button class="nav__item is-active" id="nav-work" type="button">WORK</button>
+        <button class="nav__item" id="nav-profile" type="button" aria-expanded="false" aria-controls="profile-panel">PROFILE</button>
       </nav>
     </header>
 
@@ -44,7 +43,7 @@
           <span class="hero-title__made">MADE</span>
           <span class="hero-title__accent-wrap"><span class="hero-title__accent-shadow" aria-hidden="true"></span><span class="hero-title__accent">TANGIBLE.</span></span>
         </h1>
-        <p class="hero__lede">AI engineer building fast-turnaround prototypes, complex systems, and product experiences with strong technical depth and design sense.</p>
+        <p class="hero__lede">I build prototypes and production tools quickly, especially when the problem mixes software architecture, interaction design, and unusual technical constraints.</p>
       </div>
 
       <section class="workbench" id="work-map" aria-label="Portfolio metro map">
@@ -79,6 +78,30 @@
       </section>
     </section>
   </main>
+
+  <div class="profile-overlay" id="profile-overlay" aria-hidden="true">
+    <button class="profile-overlay__backdrop" id="profile-backdrop" type="button" aria-label="Close profile"></button>
+    <aside class="profile-panel" id="profile-panel" role="dialog" aria-modal="true" aria-labelledby="profile-title">
+      <div class="profile-panel__shadow" aria-hidden="true"></div>
+      <div class="profile-panel__paper">
+        <button class="profile-panel__close" id="profile-close" type="button" aria-label="Close profile">×</button>
+        <p class="profile-panel__kicker">PROFILE</p>
+        <h2 id="profile-title">MATEO<br><span>SALDIVAR</span></h2>
+        <p class="profile-panel__role">AI ENGINEER / INTERACTIVE SYSTEMS</p>
+        <p class="profile-panel__intro">I build working prototypes, internal tools, AI workflows, and interactive systems. I work directly in code, taking ambiguous problems from definition through implementation, iteration, and rollout.</p>
+        <p class="profile-panel__intro">My background spans infrastructure and developer tooling, AI training and evaluation systems, gameplay AI, editor tools, web products, and game prototypes across Python, TypeScript, C#, C++, Unity, Unreal, and cloud platforms.</p>
+        <div class="profile-panel__proof">
+          <span>GAME AI UNCOVERED</span>
+          <strong>CONTRIBUTING AUTHOR · VOLUMES 4, 5 &amp; 6</strong>
+          <small>Utility AI · LLM-driven NPC behavior · believable animal behavior</small>
+        </div>
+        <div class="profile-panel__links">
+          <a href="https://github.com/pentaenix" target="_blank" rel="noreferrer">GITHUB <span aria-hidden="true">↗</span></a>
+          <a href="https://zirodev.itch.io/" target="_blank" rel="noreferrer">ITCH.IO <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </aside>
+  </div>
 
   <section class="detail-view" id="detail-view" aria-hidden="true">
     <button class="detail-view__return" id="return-detail" type="button"><span aria-hidden="true">↙</span><span>RETURN TO MAP</span></button>

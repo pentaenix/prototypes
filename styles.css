@@ -61,7 +61,8 @@ button { font: inherit; }
 .brand__name { font: 800 1.34rem/.85 var(--display); letter-spacing: .03em; }
 .brand__role { font: 500 .72rem/1 var(--mono); letter-spacing: .08em; color: var(--muted); }
 .nav { display: inline-flex; gap: 4px; border: 1px solid var(--edge); background: rgba(0,0,0,.28); padding: 4px; }
-.nav__item { padding: 10px 14px; font: 600 .68rem/1 var(--mono); letter-spacing: .08em; }
+.nav__item { padding: 10px 14px; border: 0; background: transparent; color: var(--paper); font: 600 .68rem/1 var(--mono); letter-spacing: .08em; cursor: pointer; }
+.nav__item:hover { background: rgba(255,255,255,.07); }
 .nav__item.is-active { background: var(--signal); color: #000; }
 
 .hero {
@@ -243,6 +244,31 @@ button { font: inherit; }
 .preview-panel__enter:hover { color: #fff; }
 .preview-panel__enter:hover::before { width: 100%; }
 
+
+/* Profile overlay: same physical paper/slab language as project tickets. */
+.profile-overlay { position: fixed; inset: 0; z-index: 90; visibility: hidden; pointer-events: none; }
+.profile-overlay.is-open { visibility: visible; pointer-events: auto; }
+.profile-overlay__backdrop { position: absolute; inset: 0; border: 0; background: rgba(0,0,0,.62); opacity: 0; cursor: default; transition: opacity .18s ease; }
+.profile-overlay.is-open .profile-overlay__backdrop { opacity: 1; }
+.profile-panel { position: absolute; right: clamp(20px,4vw,70px); top: 50%; width: min(560px,88vw); transform: translate(120%, -50%) rotate(4deg); transition: transform .42s var(--impact); }
+.profile-overlay.is-open .profile-panel { transform: translate(0,-50%) rotate(-1.8deg); }
+.profile-panel__shadow { position: absolute; inset: 16px -16px -16px 16px; background: var(--signal); clip-path: polygon(4% 0,100% 0,100% 91%,95% 100%,0 100%,0 7%); transform: rotate(1.8deg); }
+.profile-panel__paper { position: relative; padding: 30px 34px 32px; background: var(--paper); color: #090a0c; clip-path: polygon(4% 0,100% 0,100% 91%,95% 100%,0 100%,0 7%); box-shadow: 18px 20px 0 rgba(0,0,0,.3); }
+.profile-panel__close { position: absolute; right: 18px; top: 18px; width: 38px; height: 38px; border: 2px solid #090a0c; border-radius: 999px; background: transparent; color: #090a0c; font: 800 1.15rem/1 var(--display); cursor: pointer; transform: rotate(9deg); }
+.profile-panel__close:hover { background: #090a0c; color: var(--paper); transform: rotate(-8deg) scale(1.05); }
+.profile-panel__kicker { display: inline-block; margin: 0; padding: 6px 9px; background: #090a0c; color: var(--paper); font: 700 .68rem/1 var(--mono); letter-spacing: .1em; }
+.profile-panel h2 { margin: 18px 0 0; font: 900 clamp(3.4rem,6vw,5.6rem)/.72 var(--display); letter-spacing: -.045em; text-transform: uppercase; transform: rotate(-1.2deg); }
+.profile-panel h2 span { color: var(--signal); }
+.profile-panel__role { margin: 22px 0 0; font: 700 .78rem/1.2 var(--mono); letter-spacing: .07em; }
+.profile-panel__intro { margin: 15px 0 0; max-width: 54ch; font-size: .98rem; line-height: 1.55; color: rgba(9,10,12,.82); }
+.profile-panel__proof { margin-top: 22px; padding: 14px 16px 15px; border: 2px solid #090a0c; background: #fff; transform: rotate(.5deg); }
+.profile-panel__proof span { display: block; font: 700 .62rem/1 var(--mono); letter-spacing: .08em; }
+.profile-panel__proof strong { display: block; margin-top: 7px; font: 900 1.18rem/.95 var(--display); letter-spacing: .015em; }
+.profile-panel__proof small { display: block; margin-top: 8px; font: 500 .7rem/1.4 var(--mono); }
+.profile-panel__links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+.profile-panel__links a { display: flex; justify-content: space-between; align-items: center; padding: 13px 14px; border: 2px solid #090a0c; background: #090a0c; color: #fff; font: 700 .72rem/1 var(--mono); letter-spacing: .08em; transition: transform .16s ease, background .16s ease, color .16s ease; }
+.profile-panel__links a:hover { background: var(--signal); color: #090a0c; transform: translateY(-2px); }
+
 .detail-view {
   position: fixed; inset: 0; z-index: 60;
   background: rgba(9,10,12,.98);
@@ -364,4 +390,12 @@ button { font: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+
+@media (max-width:700px){
+  .profile-panel{right:5vw;width:90vw;}
+  .profile-panel__paper{padding:24px 22px 24px;}
+  .profile-panel h2{font-size:clamp(3rem,16vw,4.7rem);}
+  .profile-panel__intro{font-size:.9rem;line-height:1.48;}
+  .profile-panel__links{grid-template-columns:1fr;}
 }

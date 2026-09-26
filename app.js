@@ -5,81 +5,78 @@ const STATIONS = [
   {
     id: 'breadmaker',
     title: 'BREADMAKER',
-    short: 'Authoring platform',
+    short: 'Local-first authoring application',
     kicker: 'AUTHORING / TOOLS',
-    description: 'A writing and planning workspace I have been iterating on as a real product: manuscript editing, maps, reviews, and tools that fit together instead of living in separate apps.',
-    detailText: 'Breadmaker is my long-running authoring platform. The interesting part is not one isolated editor feature; it is the way manuscript work, planning, maps, reviews, and local-first behavior are being designed as one system.',
+    description: 'Breadmaker is a local-first writing application for long-form projects. It combines manuscript editing, visual planning, maps, review workflows, and project storage in one workspace.',
+    detailText: 'Breadmaker is an ongoing authoring application built around the workflow of writing a large manuscript. The editor handles chapters and scenes, while separate views cover visual planning, maps, review sessions, checkpoints, and project recovery. The video below shows the current product website and how the application is presented to users.',
     station: { x: 785, y: 175 },
     join: { x: 653, y: 256, angle: -0.79 },
     branchPoints: [[653,256],[718,208],[785,208],[785,175]],
     label: { x: 785, y: 124, anchor: 'middle', rotate: -1.4 },
     tooltipSide: 'top',
-    previewAsset: { type: 'video', badge: 'VIDEO', label: 'BREADMAKER — SITE REEL', src: './assets/breadmaker-site.mp4' },
+    previewAsset: { type: 'video', badge: 'VIDEO', label: 'BREADMAKER — PRODUCT WEBSITE WALKTHROUGH', src: './assets/breadmaker-site.mp4' },
     assets: [
-      { type: 'video', badge: 'VIDEO', label: 'BREADMAKER — SITE REEL', src: './assets/breadmaker-site.mp4' },
-      { type: 'placeholder', badge: 'VIDEO', label: 'EDITOR APP — FULL WALKTHROUGH' },
-      { type: 'placeholder', badge: 'IMAGE', label: 'MANUSCRIPT + REVIEW' },
-      { type: 'placeholder', badge: 'IMAGE', label: 'MAPS + PLANNING' }
+      { type: 'video', badge: 'VIDEO', label: 'BREADMAKER — PRODUCT WEBSITE WALKTHROUGH', src: './assets/breadmaker-site.mp4' },
     ]
   },
   {
     id: 'online-stores',
     title: 'ONLINE STORES',
-    short: 'Commerce + internal tooling',
+    short: 'Storefronts + usability tooling',
     kicker: 'ECOMMERCE / INTERNAL TOOLS',
-    description: 'Storefront work where the job is equal parts implementation, design judgment, and fast iteration — plus Cairon, the internal tooling used to run and review user tests.',
-    detailText: 'This section combines live storefront work with the internal tooling around it. Corazón de Terciopelo and AvoKind are real sites; Cairon is the supporting tool used to register user-testing sessions and inspect the data that comes back.',
+    description: 'Two live storefront projects and the internal testing tool used alongside product work. Corazón de Terciopelo and AvoKind are public ecommerce sites; Cairon records and reviews structured user-test sessions.',
+    detailText: 'This section contains two live ecommerce sites and one internal research tool. Corazón de Terciopelo is a jewelry storefront, AvoKind is a consumer nutrition storefront, and Cairon is a browser-based tool for registering usability sessions and reviewing the resulting reports.',
     station: { x: 890, y: 355 },
     join: { x: 700, y: 384, angle: 0.09 },
     branchPoints: [[700,384],[812,384],[836,355],[890,355]],
     label: { x: 890, y: 307, anchor: 'middle', rotate: -1 },
     tooltipSide: 'top',
-    previewAsset: { type: 'image', badge: 'LIVE SITE', label: 'AVOKIND — STOREFRONT', src: './assets/avokind-home.png', href: 'https://avokind.com/' },
+    previewAsset: { type: 'image', badge: 'LIVE SITE', label: 'AVOKIND — NUTRITION STOREFRONT', src: './assets/avokind-home.png', href: 'https://avokind.com/' },
     assets: [
-      { type: 'image', badge: 'LIVE SITE', label: 'CORAZÓN DE TERCIOPELO', src: './assets/corazon-home.png', href: 'https://corazondeterciopelo.com/' },
-      { type: 'image', badge: 'LIVE SITE', label: 'AVOKIND', src: './assets/avokind-home.png', href: 'https://avokind.com/' },
-      { type: 'image', badge: 'INTERNAL TOOL', label: 'CAIRON — USER TESTING', src: './assets/cairon-tooling.png' },
-      { type: 'image', badge: 'REPORT', label: 'CAIRON — SESSION REPORT', src: './assets/cairon-report-01.png' }
+      { type: 'image', badge: 'LIVE SITE', label: 'CORAZÓN DE TERCIOPELO — JEWELRY STOREFRONT', src: './assets/corazon-home.png', href: 'https://corazondeterciopelo.com/' },
+      { type: 'image', badge: 'LIVE SITE', label: 'AVOKIND — NUTRITION STOREFRONT', src: './assets/avokind-home.png', href: 'https://avokind.com/' },
+      { type: 'image', badge: 'INTERNAL TOOL', label: 'CAIRON — SESSION REGISTRATION AND TESTING INTERFACE', src: './assets/cairon-tooling.png' },
+      { type: 'image', badge: 'REPORT', label: 'CAIRON — USER-TEST SESSION REPORT', src: './assets/cairon-report-01.png' },
+      { type: 'image', badge: 'REPORT', label: 'CAIRON — REPORT DETAIL', src: './assets/cairon-report-02.png' }
     ]
   },
   {
     id: 'interactive-experiences',
     title: 'INTERACTIVE EXPERIENCES',
-    short: 'Citrex + event builds',
+    short: 'Event browser games',
     kicker: 'EVENTS / EXPERIENCES',
-    description: 'Interactive work built to be used in public, not just viewed in a browser tab. Citrex activations and Lotería del Limón were designed to make the interaction obvious immediately.',
-    detailText: 'Interactive Experiences is where the work gets physical: event-facing browser games, custom interactions, and Citrex activations that had to work for real people in real venues with almost no onboarding. Lotería del Limón shows the same approach in a screen-first game format.',
+    description: 'Browser games created for branded event experiences. Citrex ran on a large vertical touch display at a live activation; Lotería del Limón is a separate Citrex game built around a digital lotería format.',
+    detailText: 'These are browser-based games created for Citrex event experiences. The Citrex touch game shown below was deployed on a large vertical display and played directly by attendees. Lotería del Limón is a separate branded game based on Mexican lotería; the screen recording shows the playable build rather than event footage.',
     station: { x: 810, y: 610 },
     join: { x: 639, y: 496, angle: 0.89 },
     branchPoints: [[639,496],[714,555],[810,555],[810,610]],
     label: { x: 810, y: 670, anchor: 'middle', rotate: -1.3 },
     tooltipSide: 'bottom',
-    previewAsset: { type: 'image', badge: 'LIVE EVENT', label: 'CITREX — EVENT EXPERIENCE', src: './assets/citrex-event.png' },
+    previewAsset: { type: 'image', badge: 'LIVE EVENT', label: 'CITREX — TOUCH GAME RUNNING AT A LIVE ACTIVATION', src: './assets/citrex-event.png' },
     assets: [
-      { type: 'image', badge: 'LIVE EVENT', label: 'CITREX — EVENT EXPERIENCE', src: './assets/citrex-event.png' },
-      { type: 'image', badge: 'BRAND / EVENT', label: 'CITREX', src: './assets/citrex-logo.png' },
+      { type: 'image', badge: 'LIVE EVENT', label: 'CITREX — TOUCH GAME RUNNING AT A LIVE ACTIVATION', src: './assets/citrex-event.png' },
+      { type: 'image', badge: 'BRAND / EVENT', label: 'CITREX — GAME BRANDING', src: './assets/citrex-logo.png' },
       { type: 'image', badge: 'GAME', label: 'LOTERÍA DEL LIMÓN — TITLE SCREEN', src: './assets/loteria-del-limon.png' },
-      { type: 'video', badge: 'SCREEN RECORDING', label: 'LOTERÍA DEL LIMÓN — GAMEPLAY', src: './assets/loteria-del-limon.mp4' }
+      { type: 'video', badge: 'SCREEN RECORDING', label: 'LOTERÍA DEL LIMÓN — PLAYABLE BUILD', src: './assets/loteria-del-limon.mp4' }
     ]
   },
   {
     id: 'videogames',
     title: 'VIDEOGAMES',
-    short: 'Fan games + shipped work',
+    short: 'Games + interactive tools',
     kicker: 'GAME DEVELOPMENT',
-    description: 'Gameplay work ranging from small fan projects to tools and commercial collaborations. This is where I get to combine systems thinking with things that are simply fun to use.',
-    detailText: 'Videogames collects the projects where interaction is the product: Please Stop Helping, Pokémon Resort work, Aquarium Maker, and earlier collaborations such as Tuiio, Space Elite, and Witches of the New World.',
+    description: 'Game projects and interactive tools. Please Stop Helping is the main game shown here, alongside the Pokémon Resort fan project and Aquarium Maker, a browser-based 3D layout editor.',
+    detailText: 'This section collects game-focused work from different projects. Please Stop Helping is the primary game shown here. Pokémon Resort is a fan project with its own documentation site, and Aquarium Maker is a browser-based 3D layout tool for designing aquarium spaces and passage geometry.',
     station: { x: 178, y: 610 },
     join: { x: 428, y: 484, angle: 2.31 },
     branchPoints: [[428,484],[338,555],[235,555],[235,610],[178,610]],
     label: { x: 178, y: 670, anchor: 'middle', rotate: 1 },
     tooltipSide: 'bottom',
-    previewAsset: { type: 'video', badge: 'VIDEO', label: 'PLEASE STOP HELPING', src: './assets/psh.mp4' },
+    previewAsset: { type: 'video', badge: 'VIDEO', label: 'PLEASE STOP HELPING — GAME FOOTAGE', src: './assets/psh.mp4' },
     assets: [
-      { type: 'video', badge: 'VIDEO', label: 'PLEASE STOP HELPING', src: './assets/psh.mp4' },
-      { type: 'image', badge: 'FAN PROJECT', label: 'POKÉMON RESORT', src: './assets/pokemon-resort-page.png', href: 'https://pentaenix.github.io/pokemon-resort-page/#/' },
-      { type: 'image', badge: 'TOOL / SIMULATION', label: 'AQUARIUM MAKER', src: './assets/aquarium-maker.png' },
-      { type: 'placeholder', badge: 'IMAGE', label: 'TUIIO / SPACE ELITE / WITCHES OF THE NEW WORLD' }
+      { type: 'video', badge: 'VIDEO', label: 'PLEASE STOP HELPING — GAME FOOTAGE', src: './assets/psh.mp4' },
+      { type: 'image', badge: 'FAN PROJECT', label: 'POKÉMON RESORT — PROJECT DOCUMENTATION SITE', src: './assets/pokemon-resort-page.png', href: 'https://pentaenix.github.io/pokemon-resort-page/#/' },
+      { type: 'image', badge: 'TOOL / SIMULATION', label: 'AQUARIUM MAKER — BROWSER-BASED 3D LAYOUT EDITOR', src: './assets/aquarium-maker.png' },
     ]
   }
 ];
@@ -120,7 +117,12 @@ const els = {
   strikeTopAccent: document.querySelector('.strike__block--top-accent'),
   strikeBottomAccent: document.querySelector('.strike__block--bottom-accent'),
   strikeTitle: document.getElementById('strike-title'),
-  shell: document.getElementById('shell')
+  shell: document.getElementById('shell'),
+  navWork: document.getElementById('nav-work'),
+  navProfile: document.getElementById('nav-profile'),
+  profileOverlay: document.getElementById('profile-overlay'),
+  profileBackdrop: document.getElementById('profile-backdrop'),
+  profileClose: document.getElementById('profile-close')
 };
 
 let selectedId = null;
@@ -624,6 +626,26 @@ function closeDetail() {
   });
 }
 
+function openProfile() {
+  if (transitionBusy || els.detailView.classList.contains('is-open')) return;
+  closePreview();
+  els.profileOverlay.classList.add('is-open');
+  els.profileOverlay.setAttribute('aria-hidden', 'false');
+  els.navProfile.classList.add('is-active');
+  els.navProfile.setAttribute('aria-expanded', 'true');
+  els.navWork.classList.remove('is-active');
+  requestAnimationFrame(() => els.profileClose.focus());
+}
+
+function closeProfile() {
+  if (!els.profileOverlay.classList.contains('is-open')) return;
+  els.profileOverlay.classList.remove('is-open');
+  els.profileOverlay.setAttribute('aria-hidden', 'true');
+  els.navProfile.classList.remove('is-active');
+  els.navProfile.setAttribute('aria-expanded', 'false');
+  els.navWork.classList.add('is-active');
+}
+
 const trainState = {
   currentId: STATIONS[Math.floor(Math.random() * STATIONS.length)].id,
   targetId: null,
@@ -711,6 +733,18 @@ els.previewClose.addEventListener('click', (event) => {
 });
 els.previewEnter.addEventListener('click', openDetail);
 els.returnDetail.addEventListener('click', closeDetail);
+
+
+els.navProfile.addEventListener('click', openProfile);
+els.navWork.addEventListener('click', () => {
+  closeProfile();
+  if (els.detailView.classList.contains('is-open')) closeDetail();
+});
+els.profileClose.addEventListener('click', closeProfile);
+els.profileBackdrop.addEventListener('click', closeProfile);
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && els.profileOverlay.classList.contains('is-open')) closeProfile();
+});
 
 document.addEventListener('pointerdown', (event) => {
   if (els.detailView.classList.contains('is-open')) return;
