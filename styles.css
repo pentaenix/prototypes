@@ -336,16 +336,23 @@ button { font: inherit; }
 }
 .project-overlay.is-open .project-panel { transform: translate(0,-50%) rotate(-1.15deg); }
 .project-panel__shadow {
-  position: absolute; inset: 18px -18px -18px 18px;
+  position: absolute;
+  inset: 16px -16px -16px 16px;
+  z-index: 0;
   background: var(--signal);
-  clip-path: polygon(4% 0,100% 0,100% 94%,96% 100%,0 100%,0 6%);
-  transform: rotate(1.35deg);
+  clip-path: polygon(4% 0,100% 0,100% 91%,95% 100%,0 100%,0 7%);
+  transform: rotate(1.8deg);
+  transform-origin: center;
 }
 .project-panel__paper {
-  position: relative; max-height: 88vh; overflow: auto;
+  position: relative;
+  z-index: 1;
+  max-height: 88vh;
+  overflow: auto;
   padding: 30px 34px 34px;
-  background: var(--paper); color: #090a0c;
-  clip-path: polygon(4% 0,100% 0,100% 94%,96% 100%,0 100%,0 6%);
+  background: var(--paper);
+  color: #090a0c;
+  clip-path: polygon(4% 0,100% 0,100% 91%,95% 100%,0 100%,0 7%);
   box-shadow: 18px 20px 0 rgba(0,0,0,.3);
   scrollbar-width: thin;
 }
